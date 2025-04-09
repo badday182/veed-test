@@ -10,6 +10,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 
+import { Trash } from "lucide-react";
+
 import styles from "./index.module.css";
 import clsx from "clsx";
 import { Todo } from "@/types";
@@ -46,6 +48,7 @@ const ToDosList = () => {
               <Badge variant={todo.completed ? "default" : "secondary"}>
                 {todo.completed ? "Completed" : "Pending"}
               </Badge>
+              <Trash className="ml-auto text-red-500" />
             </CardFooter>
           </Card>
         ))

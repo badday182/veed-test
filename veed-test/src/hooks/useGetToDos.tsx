@@ -1,10 +1,13 @@
+import { IToDos } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect } from "react";
 
 const useGetToDos = (isEnable: boolean) => {
   const getAllToDos = async () => {
-    return axios.get("https://jsonplaceholder.typicode.com/todos?_limit=10");
+    return axios.get<IToDos[]>(
+      "https://jsonplaceholder.typicode.com/todos?_limit=10"
+    );
   };
 
   const { data, isLoading, isError, isSuccess } = useQuery({
