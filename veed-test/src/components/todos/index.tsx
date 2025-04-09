@@ -1,7 +1,5 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import {
   Card,
   CardDescription,
@@ -14,24 +12,11 @@ import { Checkbox } from "@/components/ui/checkbox";
 
 import styles from "./index.module.css";
 import clsx from "clsx";
+import { Todo } from "@/types";
+import useGetToDos from "@/hooks/useGetToDos";
 
-interface Todo {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-}
-
-const ToDos = () => {
-  const getAllToDos = async () => {
-    return axios.get("https://jsonplaceholder.typicode.com/todos?_limit=10");
-  };
-
-  const { data, isLoading } = useQuery({
-    queryKey: ["allToDos"],
-    queryFn: getAllToDos,
-    select: (data) => data.data,
-  });
+const ToDosList = () => {
+  const { data, isLoading, isError } = useGetToDos();
 
   return (
     <div className="flex flex-col items-center space-y-4 p-4 w-full gap-4">
@@ -63,11 +48,13 @@ const ToDos = () => {
             </CardFooter>
           </Card>
         ))
-      ) : (
+      ) : isError ? (
         <div className="text-center py-8">No tasks found</div>
+      ) : (
+        "Unexpected error, call 911!"
       )}
     </div>
   );
 };
 
-export default ToDos;
+export default ToDosList;
