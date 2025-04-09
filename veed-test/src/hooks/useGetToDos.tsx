@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect } from "react";
 
-const useGetToDos = () => {
+const useGetToDos = (isEnable: boolean) => {
   const getAllToDos = async () => {
     return axios.get("https://jsonplaceholder.typicode.com/todos?_limit=10");
   };
@@ -11,7 +11,7 @@ const useGetToDos = () => {
     queryKey: ["allToDos"],
     queryFn: getAllToDos,
     select: (data) => data.data,
-    enabled: true, // Зробити запит в жалежності від потреби
+    enabled: isEnable, // Зробити запит в жалежності від потреби
   });
 
   useEffect(() => {

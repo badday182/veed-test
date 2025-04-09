@@ -16,7 +16,8 @@ import { Todo } from "@/types";
 import useGetToDos from "@/hooks/useGetToDos";
 
 const ToDosList = () => {
-  const { data, isLoading, isError } = useGetToDos();
+  const isEnableForListRender = true; // робити запит в жалежності від потреби
+  const { data, isLoading, isError } = useGetToDos(isEnableForListRender); // окремо виніс логіку запиту у хук
 
   return (
     <div className="flex flex-col items-center space-y-4 p-4 w-full gap-4">
