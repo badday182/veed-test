@@ -16,9 +16,7 @@ const ToDosList = () => {
         data.map((todo: Todo) => <TodoCard {...todo} key={todo.id} />)
       ) : isError ? (
         <div className="text-center py-8">No tasks found</div>
-      ) : (
-        "Unexpected error, call 911!"
-      )}
+      ) : null}
     </div>
   );
 };
