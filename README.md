@@ -7,6 +7,7 @@ This project is implemented as a test task utilizing Next.js framework and React
 ## Demo
 
 [Live Demo](https://veed-test.vercel.app/)
+deployed site on Versel
 
 ## Getting Started
 
