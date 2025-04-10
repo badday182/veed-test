@@ -25,7 +25,7 @@ const TodoCard = ({ id, completed, title }: Todo) => {
             {title}
           </span>
         </CardTitle>
-        <CardDescription>Task #{id}</CardDescription>
+        {/* <CardDescription>Task #{id}</CardDescription> */}
       </CardHeader>
       <CardFooter>
         <Badge variant={completed ? "default" : "secondary"}>
