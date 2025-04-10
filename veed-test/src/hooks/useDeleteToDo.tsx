@@ -1,28 +1,27 @@
-import { IToDos } from "@/types";
 import { QueryClient, useMutation } from "@tanstack/react-query";
 import axios from "axios";
 
-const useCreateToDo = () => {
+const useDeleteToDo = () => {
   const queryClient = new QueryClient();
   const { mutate } = useMutation({
-    mutationFn: (newTodo: Omit<IToDos, "userId">) => {
-      return axios.post(`${process.env.NEXT_PUBLIC_API_URL}`, newTodo);
+    mutationFn: (id: number) => {
+      return axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/${id}`);
     },
     onError: (error) => {
-      console.error("Error creating todo:", error);
+      console.error("Error deleting todo:", error);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["allToDos"] });
-      console.log("Todo created successfully");
+      console.log(`Todo deleted successfully`);
     },
   });
 
   return {
-    createTodo: mutate,
+    deleteTodo: mutate,
     // data,
     // isError,
     // isSuccess,
   };
 };
 
-export default useCreateToDo;
+export default useDeleteToDo;

@@ -11,9 +11,22 @@ import { Trash } from "lucide-react";
 
 import { Todo } from "@/types";
 import clsx from "clsx";
+import useDeleteToDo from "@/hooks/useDeleteToDo";
+import { QueryClient } from "@tanstack/react-query";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
-// const TodoCard = (todo: Todo) => {
 const TodoCard = ({ id, completed, title }: Todo) => {
+  const { deleteTodo } = useDeleteToDo();
+  const queryClient = new QueryClient();
+
+  const handleDeleteToDo = () => {
+    deleteTodo(id);
+    queryClient.invalidateQueries({ queryKey: ["allToDos"] });
+    toast("You deleted the following task:", {
+      description: <p>{JSON.stringify(title)}</p>,
+    });
+  };
   return (
     <Card key={id} className={clsx("shadow-md min-w-xs max-w-3xl w-full")}>
       <CardHeader className="pb-2 grow">
@@ -31,7 +44,16 @@ const TodoCard = ({ id, completed, title }: Todo) => {
         <Badge variant={completed ? "default" : "secondary"}>
           {completed ? "Completed" : "Pending"}
         </Badge>
-        <Trash className="ml-auto text-red-500" />
+        <Button
+          className={clsx(
+            "ml-auto shadow-md hover:shadow-xl transition-shadow cursor-pointer"
+          )}
+          variant="destructive"
+          onClick={handleDeleteToDo}
+        >
+          <Trash onClick={handleDeleteToDo} />
+          Delete ToDo
+        </Button>
       </CardFooter>
     </Card>
   );

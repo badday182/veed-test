@@ -6,7 +6,8 @@ import { useEffect } from "react";
 const useGetToDos = (isEnable: boolean) => {
   const getAllToDos = async () => {
     return axios.get<IToDos[]>(
-      "https://jsonplaceholder.typicode.com/todos?_limit=10"
+      // "https://jsonplaceholder.typicode.com/todos?_limit=10"
+      `${process.env.NEXT_PUBLIC_API_URL}?_limit=10`
     );
   };
 
