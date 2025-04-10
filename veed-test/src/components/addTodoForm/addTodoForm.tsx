@@ -40,24 +40,29 @@ export function AddTodoForm() {
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
-        <FormField
-          control={form.control}
-          name="task"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Task</FormLabel>
-              <FormControl>
-                <Input placeholder="Text New Task" {...field} />
-              </FormControl>
-              <FormDescription>Add New Task.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit">Add</Button>
-      </form>
-    </Form>
+    <div className="min-w-xs max-w-3xl w-full min-h-40">
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="w-2/3 space-y-6"
+        >
+          <FormField
+            control={form.control}
+            name="task"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Add New Task</FormLabel>
+                <FormControl>
+                  <Input placeholder="Text New Task" {...field} />
+                </FormControl>
+                {/* <FormDescription>Add New Task.</FormDescription> */}
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button type="submit">Add</Button>
+        </form>
+      </Form>
+    </div>
   );
 }
