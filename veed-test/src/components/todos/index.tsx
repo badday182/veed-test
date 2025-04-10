@@ -3,7 +3,7 @@
 import { Todo } from "@/types";
 import useGetToDos from "@/hooks/useGetToDos";
 import TodoCard from "@/components/todoCard/TodoCard";
-import TodoCardSkeleton from "@/components/TodoCardSkeleton/TodoCardSkeleton";
+import TodoCardSkeleton from "@/components/todoCardSkeleton/TodoCardSkeleton";
 
 const ToDosList = () => {
   const isEnableForListRender = true; // робити запит в жалежності від потреби
