@@ -4,19 +4,20 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-// import { toast } from "@/components/hooks/use-toast";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
+  //   FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import useCreateToDo from "@/hooks/useCreateToDo";
+import { useId } from "react";
 
 const FormSchema = z.object({
   task: z.string().min(2, {
@@ -25,6 +26,9 @@ const FormSchema = z.object({
 });
 
 export function AddTodoForm() {
+  const { createTodo } = useCreateToDo();
+  const id = useId();
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -33,6 +37,11 @@ export function AddTodoForm() {
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
+    createTodo({
+      id: +id,
+      title: data.task,
+      completed: false,
+    });
     toast("You added the following task:", {
       description: <p>{JSON.stringify(data.task)}</p>,
     });
