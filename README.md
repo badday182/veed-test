@@ -4,6 +4,8 @@
 
 This project is implemented as a test task utilizing Next.js framework and React hooks. The application features a todo list with basic CRUD operations, styled using Tailwind CSS and leveraging TanStack Query (React Query) for API state management.
 
+The functionality for deleting and adding a new task has been implemented, but it does not work correctly since the free subscription service does not allow this
+
 ## Demo
 
 [Live Demo](https://veed-test.vercel.app/)
