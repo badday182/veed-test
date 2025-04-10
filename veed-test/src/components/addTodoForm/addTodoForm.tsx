@@ -43,7 +43,12 @@ export function AddTodoForm() {
       completed: false,
     });
     toast("You added the following task:", {
-      description: <p>{JSON.stringify(data.task)}</p>,
+      description: (
+        <>
+          <p>{JSON.stringify(data.task)}</p>
+          <p>This functionality is not implemented on server</p>
+        </>
+      ),
     });
     form.reset();
   }

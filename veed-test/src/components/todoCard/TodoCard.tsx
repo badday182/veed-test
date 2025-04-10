@@ -24,14 +24,25 @@ const TodoCard = ({ id, completed, title }: Todo) => {
     deleteTodo(id);
     queryClient.invalidateQueries({ queryKey: ["allToDos"] });
     toast("You deleted the following task:", {
-      description: <p>{JSON.stringify(title)}</p>,
+      description: (
+        <>
+          <p>{JSON.stringify(title)}</p>
+          <p>This functionality is not implemented on server</p>
+        </>
+      ),
     });
   };
   return (
     <Card key={id} className={clsx("shadow-md min-w-xs max-w-3xl w-full")}>
       <CardHeader className="pb-2 grow">
         <CardTitle className="text-lg flex gap-2 items-baseline  ">
-          <Checkbox id={`todo-${id}`} checked={completed} />
+          <Checkbox
+            id={`todo-${id}`}
+            checked={completed}
+            onClick={() => {
+              toast("This functionality is not implemented yet :)");
+            }}
+          />
           <span
             className={completed ? "line-through text-muted-foreground" : ""}
           >
