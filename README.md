@@ -6,14 +6,14 @@ This project is implemented as a test task utilizing Next.js framework and React
 
 ## Demo
 
-[Live Demo](your-demo-link-here)
+[Live Demo](https://veed-test.vercel.app/)
 
 ## Getting Started
 
 1. Clone the repository:
 
 ```bash
-git clone [repository-url]
+git clone https://github.com/badday182/veed-test.git
 ```
 
 2. Install dependencies:
